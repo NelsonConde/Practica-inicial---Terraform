@@ -5,6 +5,11 @@ terraform {
       version = ">= 6.0"
     }
   }
+
+  backend "gcs" {
+    bucket = "tfstate-project-dbb36c67-9183-4c5d-aff"
+    prefix = "practica-2"
+  }
 }
 
 provider "google" {
@@ -45,4 +50,5 @@ resource "google_compute_instance" "web" {
   metadata_startup_script = file("arranque.sh")
 
   allow_stopping_for_update = true
+
 }
